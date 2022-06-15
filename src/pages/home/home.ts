@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {  NavController, IonicPage } from 'ionic-angular';
 import { IonicPageModule } from 'ionic-angular/module';
 import { NgModule } from '@angular/core';
+import { MenuController } from 'ionic-angular/components/app/menu-controller';
 
 @IonicPage()
 @Component({
@@ -10,9 +11,17 @@ import { NgModule } from '@angular/core';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
-
+  constructor(public navCtrl: NavController, public menu: MenuController) {
   }
+    ionViewWillEnter() {
+    this.menu.swipeEnable(false);
+  }
+    ionViewDidLeave() {
+    this.menu.swipeEnable(true);
+  }
+ 
+
+  
 
   login() {
    // this.auth.authenticate(this.creds)
